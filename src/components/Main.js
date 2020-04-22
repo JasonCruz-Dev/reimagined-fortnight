@@ -12,19 +12,12 @@ const Main = (props) => {
     <div className='getstarted'>
       {props.isFetching ? (
         <div>
-          <p className='processing_request'></p>
+          <div className='processing_request'></div>
           <Spinner style={{ marginLeft: "25px" }} color='primary'></Spinner>
-          <p className='getstarted_para'>
-            This will load Space X's list of Rockets they have on a public list. Though they many to
-            on a list to choose from, we choose this one. This was a Lambda School Project working
-            with React.Js, Redux and Middleware. Everything under the hood can be seen by "pressing
-            F12".{" "}
-          </p>{" "}
-          {/* make sure to add a paragraph here to give a description*/}
         </div>
       ) : (
-        <Button color='primary' onClick={() => props.getApi()}>
-          Rockets
+        <Button className='display_rockets' color='primary' onClick={() => props.getApi()}>
+          Display Rockets
         </Button>
       )}
     </div>

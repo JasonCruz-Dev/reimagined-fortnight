@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import "../App.css";
 import {
@@ -11,15 +11,11 @@ import {
   CardHeader,
   CardText,
   CardFooter,
-  Tooltip,
 } from "reactstrap";
 
 const SpacexCard = () => {
   const data = useSelector((state) => state.id);
   const error = useSelector((state) => state.error);
-
-  const [tooltipOpen, setTooltipOpen] = useState(false);
-  const toggle = () => setTooltipOpen(!tooltipOpen);
 
   console.log(data);
 
@@ -29,7 +25,7 @@ const SpacexCard = () => {
         <div className='error'>{error}</div>
       ) : (
         data.map((param) => (
-          <Col lg='6'>
+          <Col lg='4'>
             <Card className='cardgroup'>
               <div key={param.id}>
                 <CardHeader className='container'>
@@ -50,23 +46,12 @@ const SpacexCard = () => {
                     <CardFooter>
                       {" "}
                       <a
-                        id='tooltip'
                         className='cardbutton'
-                        style={{ textDecoration: "none" }}
                         href={param.wikipedia}
                         rel='noopener noreferrer'
                         target='_blank'>
                         More Info
                       </a>
-                      <Tooltip
-                        placement='right'
-                        isOpen={tooltipOpen}
-                        target='tooltip'
-                        toggle={toggle}
-                        style={{ background: "white", color: "black" }}>
-                        {" "}
-                        Opening a new page!
-                      </Tooltip>
                     </CardFooter>
                   </div>
                 </div>
